@@ -1,43 +1,27 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { IncomeService } from './income.service';
 
 @Controller('income')
 export class IncomeController {
-  id = 3;
-  incomes = [
-    {
-      id: 1,
-      name: 'Basic Net Salary',
-      amount: 900.0,
-      companyName: 'ABC Sdn Bhd',
-    },
-    {
-      id: 1,
-      name: 'Overtime',
-      amount: 900.0,
-      companyName: 'ABC Sdn Bhd',
-    },
-  ];
+  constructor(private readonly service: IncomeService) {}
 
   @Get()
   findAll() {
-    return this.incomes;
+    return this.service.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id) {
-    return this.incomes.find((v) => Number(v.id) === Number(id));
+    return this.service.findOne(id);
   }
 
   @Put(':id')
   update(@Param('id') id, @Body() body) {
-    const index = this.incomes.findIndex((v) => Number(v.id) === Number(id));
-    this.incomes[index] = { ...this.incomes[index], ...body };
-    return this.incomes[index];
+    return this.service.update(id, body);
   }
 
   @Post()
   create(@Body() body) {
-    this.incomes.push({ id: this.id++, ...body });
-    return this.incomes[this.incomes.length - 1];
+    return this.service.create(body);
   }
 }
