@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 
-@Controller('v1/income')
+@Controller('income')
 export class IncomeController {
   id = 3;
   incomes = [
