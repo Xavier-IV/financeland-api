@@ -1,6 +1,6 @@
 # FinanceLand API
 
-This REST API is provided to complement (FinanceLand)[https://github.com/Xavier-IV/financeland].
+This REST API is provided to complement [FinanceLand](https://github.com/Xavier-IV/financeland).
 
 # Prerequisites
 
