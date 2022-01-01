@@ -15,8 +15,6 @@ export class BalanceController {
     const incomes = this.incomeService.findAll();
     const expense = this.expenseService.findAll();
 
-    console.log({ incomes, expense });
-
     const totalIncome = incomes.reduce((sum, record) => {
       return sum.add(Big(record.amount));
     }, Big(0));

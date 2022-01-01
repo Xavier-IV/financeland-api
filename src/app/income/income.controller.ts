@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { IncomeService } from './income.service';
 
 @Controller('income')
@@ -23,5 +31,10 @@ export class IncomeController {
   @Post()
   create(@Body() body) {
     return this.service.create(body);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id) {
+    return this.service.destroy(id);
   }
 }

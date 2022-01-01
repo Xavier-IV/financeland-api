@@ -11,7 +11,7 @@ export class IncomeService {
       companyName: 'ABC Sdn Bhd',
     },
     {
-      id: 1,
+      id: 2,
       name: 'Overtime',
       amount: 900.0,
       companyName: 'ABC Sdn Bhd',
@@ -33,7 +33,7 @@ export class IncomeService {
   }
 
   create(body) {
-    this.incomes.push({ id: this.id++, ...body });
+    this.incomes.push({ ...body, id: this.id++ });
     return this.incomes[this.incomes.length - 1];
   }
 
